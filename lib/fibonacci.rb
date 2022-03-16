@@ -13,7 +13,7 @@ end
 p fibs(8)
 
 def fibs_rec(number, fib = [0, 1])
-  fib.length.between?(2, number - 1) ? fibs_rec(number, fib << fib[-1] + fib[-2]) : fib
+  fib.length < number ? fibs_rec(number, fib << fib[-1] + fib[-2]) : fib
 end
 
 p fibs_rec(8)
