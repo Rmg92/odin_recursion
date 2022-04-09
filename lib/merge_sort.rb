@@ -12,10 +12,7 @@ end
 
 def merge(left_branch, right_branch)
   merged_array = []
-
-  # unless left_branch is empty or right_branch is empty
   until left_branch.empty? || right_branch.empty?
-    # if left_branch[0] smaller than right_array[0]
     if left_branch[0] < right_branch[0]
       merged_array << left_branch[0]
       left_branch.delete_at(0)
@@ -23,20 +20,12 @@ def merge(left_branch, right_branch)
       merged_array << right_branch[0]
       right_branch.delete_at(0)
     end
-
-    # push left_branch[0] to merged_array
-    # else
-    # push right_branch[0] to merged_array
   end
   if left_branch.empty?
-    right_branch.each {|number| merged_array << number}
+    right_branch.each { |number| merged_array << number }
   elsif right_branch.empty?
-    left_branch.each {|number| merged_array << number}
+    left_branch.each { |number| merged_array << number }
   end
-  # if left_branch is empty
-  # push right_branch to merged_array
-  # elsif right_branch is empty
-  # push left_branch to merged_array
   merged_array
 end
 
