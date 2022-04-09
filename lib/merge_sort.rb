@@ -10,22 +10,16 @@ def merge_sort(arr)
   end
 end
 
-def merge(left_branch, right_branch)
-  merged_array = []
+def merge(left_branch, right_branch, merged_array = [])
   until left_branch.empty? || right_branch.empty?
-    if left_branch[0] < right_branch[0]
-      merged_array << left_branch[0]
-      left_branch.delete_at(0)
-    else
-      merged_array << right_branch[0]
-      right_branch.delete_at(0)
-    end
+    merged_array << if left_branch[0] < right_branch[0]
+                      left_branch.slice!(0)
+                    else
+                      right_branch.slice!(0)
+                    end
   end
-  if left_branch.empty?
-    right_branch.each { |number| merged_array << number }
-  elsif right_branch.empty?
-    left_branch.each { |number| merged_array << number }
-  end
+  right_branch.each { |number| merged_array << number }
+  left_branch.each { |number| merged_array << number }
   merged_array
 end
 
